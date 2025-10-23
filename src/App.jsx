@@ -1,6 +1,7 @@
 // src/App.jsx
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import "./App.mobile.css";
 import { fetchMGNREGAThreeYears } from "./utils/fetchData";
 import { getUserDistrict } from "./utils/getUserDistrict";
 import { districts } from "./utils/districts"; // your alphabetic district list
@@ -88,37 +89,7 @@ export default function App() {
     return () => { mounted = false; };
   }, []);
 
-  // Dynamically load mobile CSS when viewport is small to keep desktop and phone CSS separate
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 600px)');
-    let linkEl = null;
-
-    function applyMobile(e) {
-      if (e.matches) {
-        // insert mobile css
-        if (!linkEl) {
-          linkEl = document.createElement('link');
-          linkEl.rel = 'stylesheet';
-          linkEl.href = '/src/App.mobile.css';
-          linkEl.id = 'app-mobile-css';
-          document.head.appendChild(linkEl);
-        }
-      } else {
-        // remove if present
-        const existing = document.getElementById('app-mobile-css');
-        if (existing) existing.remove();
-        linkEl = null;
-      }
-    }
-
-    applyMobile(mq);
-    mq.addEventListener ? mq.addEventListener('change', applyMobile) : mq.addListener(applyMobile);
-    return () => {
-      try { mq.removeEventListener ? mq.removeEventListener('change', applyMobile) : mq.removeListener(applyMobile); } catch(e){}
-      const existing = document.getElementById('app-mobile-css');
-      if (existing) existing.remove();
-    };
-  }, []);
+  // Mobile styles are imported statically (App.mobile.css) so Vite includes them in the build.
 
   // Utility: map months to order so we can sort months correctly
   const monthOrder = {

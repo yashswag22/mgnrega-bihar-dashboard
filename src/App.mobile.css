@@ -4,9 +4,12 @@ body { font-family: 'Noto Sans', Arial, sans-serif; background: #f8fafc; color: 
 
 h1 { font-size: 20px; text-align: left; color: #0b3b66; margin-bottom: 10px; }
 
-.search-box { max-width: 100%; margin: 0 0 12px; }
-.search-box input { font-size: 16px; padding: 12px; }
-.search-box button { width: 100%; padding: 12px; font-size: 16px; border-radius: 6px; }
+/* Mobile-only search layout: full-width button stacked under input on narrow screens */
+@media (max-width: 600px) {
+  .search-box { max-width: 100%; margin: 0 0 12px; }
+  .search-box input { font-size: 16px; padding: 12px; }
+  .search-box button { width: 100%; padding: 12px; font-size: 16px; border-radius: 6px; margin-top:8px }
+}
 
 .table-wrap { margin-top: 12px; }
 table { width: 100%; border-collapse: collapse; min-width: 0; font-size: 13px; }
@@ -34,3 +37,5 @@ th { position: static; }
   td:nth-of-type(6)::before { content: "Avg Wage/Day"; }
   td:nth-of-type(7)::before { content: "Change Wage"; }
 }
+  td:first-child{background:#f9fafb;font-weight:600}
+
