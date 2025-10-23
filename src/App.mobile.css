@@ -1,0 +1,36 @@
+/* src/App.mobile.css - phone-specific styles inspired by gov.in guidelines */
+body { font-family: 'Noto Sans', Arial, sans-serif; background: #f8fafc; color: #111; }
+.container { margin: 12px; padding: 12px; border-radius: 4px; box-shadow: none; }
+
+h1 { font-size: 20px; text-align: left; color: #0b3b66; margin-bottom: 10px; }
+
+.search-box { max-width: 100%; margin: 0 0 12px; }
+.search-box input { font-size: 16px; padding: 12px; }
+.search-box button { width: 100%; padding: 12px; font-size: 16px; border-radius: 6px; }
+
+.table-wrap { margin-top: 12px; }
+table { width: 100%; border-collapse: collapse; min-width: 0; font-size: 13px; }
+th, td { padding: 8px 6px; }
+th { position: static; }
+
+/* Make the table scroll horizontally but better UX on phone */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* compact legend */
+.legend { gap: 8px; justify-content: flex-start; padding-left: 4px; }
+
+/* responsive: stack certain cells using display:block in rows for very small screens */
+@media (max-width: 420px) {
+  table, thead, tbody, th, td, tr { display: block; }
+  thead tr { display: none; }
+  tr { margin-bottom: 12px; border: 1px solid #eee; padding: 8px; border-radius: 6px; }
+  td { text-align: left; padding: 6px 8px; }
+  td::before { font-weight: 600; display: inline-block; width: 130px; }
+  td:nth-of-type(1)::before { content: "Month"; }
+  td:nth-of-type(2)::before { content: "Total Exp (₹)"; }
+  td:nth-of-type(3)::before { content: "Change vs 23-24"; }
+  td:nth-of-type(4)::before { content: "Households"; }
+  td:nth-of-type(5)::before { content: "Change HH"; }
+  td:nth-of-type(6)::before { content: "Avg Wage/Day"; }
+  td:nth-of-type(7)::before { content: "Change Wage"; }
+}
